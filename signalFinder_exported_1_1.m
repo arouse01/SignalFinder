@@ -1,87 +1,92 @@
-classdef signalFinder_exported < matlab.apps.AppBase
+classdef signalFinder_exported_1_1 < matlab.apps.AppBase
 
     % Properties that correspond to app components
     properties (Access = public)
-        UIFigure                  matlab.ui.Figure
+        SignalFinderUIFigure         matlab.ui.Figure
         v13NotesAddedbuttontoexportstatsforallanalyzedfilesLabel  matlab.ui.control.Label
-        SpecSettingsButton        matlab.ui.control.Button
-        GridLayout                matlab.ui.container.GridLayout
-        InputGrid                 matlab.ui.container.GridLayout
-        ModeButtonGroup           matlab.ui.container.ButtonGroup
-        AmbientButton             matlab.ui.control.RadioButton
-        DiscreteButton            matlab.ui.control.RadioButton
-        SkipAmbientCheckBox       matlab.ui.control.CheckBox
-        VersionLabel              matlab.ui.control.Label
-        AnalysisSettingsPanel     matlab.ui.container.Panel
-        AnalysisSettingsGrid      matlab.ui.container.GridLayout
-        UnitDropDown              matlab.ui.control.DropDown
-        DownSampCheckBox          matlab.ui.control.CheckBox
-        DownSampField             matlab.ui.control.NumericEditField
-        SpectrogramCheckBox       matlab.ui.control.CheckBox
-        AmbientSettingsPanel      matlab.ui.container.Panel
-        AmbientSettingsGrid       matlab.ui.container.GridLayout
-        AmbFreqListBox            matlab.ui.control.ListBox
-        AmbFreqListBoxLabel       matlab.ui.control.Label
-        FreqAllButton             matlab.ui.control.Button
-        FreqNoneButton            matlab.ui.control.Button
-        DiscreteSettingsPanel     matlab.ui.container.Panel
-        GridLayout3               matlab.ui.container.GridLayout
-        FilterDropDown            matlab.ui.control.DropDown
-        FilterDropDownLabel       matlab.ui.control.Label
-        MinLengthField            matlab.ui.control.NumericEditField
-        MinLengthLabel            matlab.ui.control.Label
-        MinGapField               matlab.ui.control.NumericEditField
-        MinGapLabel               matlab.ui.control.Label
-        UnitDropDownLabel         matlab.ui.control.Label
-        FilePanel                 matlab.ui.container.Panel
-        DiscreteButtonGrid        matlab.ui.container.GridLayout
-        InputDiscreteTable        matlab.ui.control.Table
-        AddDiscreteRowButton      matlab.ui.control.Button
-        DeleteDiscreteRowButton   matlab.ui.control.Button
-        SaveButton                matlab.ui.control.Button
-        LoadButton                matlab.ui.control.Button
-        OutputGrid                matlab.ui.container.GridLayout
-        OutputPathField           matlab.ui.control.EditField
-        OutputPathLabel           matlab.ui.control.Label
-        OutputPathSelect          matlab.ui.control.Button
-        WarningLabel              matlab.ui.control.Label
-        AnalyzeButton             matlab.ui.control.Button
-        ResultsGrid               matlab.ui.container.GridLayout
-        AmbientResultsPanel       matlab.ui.container.Panel
-        AmbientResultsPanelGrid   matlab.ui.container.GridLayout
-        AmbientResultsTabGroup    matlab.ui.container.TabGroup
-        LZeqTab                   matlab.ui.container.Tab
-        LZeqGrid                  matlab.ui.container.GridLayout
-        LZeqAxes                  matlab.ui.control.UIAxes
-        MSLTab                    matlab.ui.container.Tab
-        MSLGrid                   matlab.ui.container.GridLayout
-        MSLAxes                   matlab.ui.control.UIAxes
-        StatTable                 matlab.ui.control.Table
-        DiscreteResultsPanel      matlab.ui.container.Panel
-        DiscreteResultsPanelGrid  matlab.ui.container.GridLayout
-        DiscreteResultsTabGroup   matlab.ui.container.TabGroup
-        WaveformTab               matlab.ui.container.Tab
-        WaveGrid                  matlab.ui.container.GridLayout
-        WaveAxes                  matlab.ui.control.UIAxes
-        SpectrogramTab            matlab.ui.container.Tab
-        SpecGrid                  matlab.ui.container.GridLayout
-        CurrSpecTimeRes           matlab.ui.control.NumericEditField
-        TimeResolutionLabel       matlab.ui.control.Label
-        SpecAxes                  matlab.ui.control.UIAxes
-        PSDTab                    matlab.ui.container.Tab
-        PSDGrid                   matlab.ui.container.GridLayout
-        PSDAxes                   matlab.ui.control.UIAxes
-        SaveWaveButton            matlab.ui.control.Button
-        ResultsButtonGrid         matlab.ui.container.GridLayout
-        SplitRecButton            matlab.ui.control.Button
-        SaveAllStatsButton        matlab.ui.control.Button
-        SaveStatsButton           matlab.ui.control.Button
-        GridLayout2               matlab.ui.container.GridLayout
-        FileListBox               matlab.ui.control.ListBox
-        FileListBoxLabel          matlab.ui.control.Label
+        SpecSettingsButton           matlab.ui.control.Button
+        GridLayout                   matlab.ui.container.GridLayout
+        InputGrid                    matlab.ui.container.GridLayout
+        ModeButtonGroup              matlab.ui.container.ButtonGroup
+        AmbientButton                matlab.ui.control.RadioButton
+        DiscreteButton               matlab.ui.control.RadioButton
+        SkipAmbientCheckBox          matlab.ui.control.CheckBox
+        VersionLabel                 matlab.ui.control.Label
+        AnalysisSettingsPanel        matlab.ui.container.Panel
+        AnalysisSettingsGrid         matlab.ui.container.GridLayout
+        ReferenceLevelDropDown       matlab.ui.control.DropDown
+        ReferenceLevelDropDownLabel  matlab.ui.control.Label
+        UnitDropDown                 matlab.ui.control.DropDown
+        DownSampCheckBox             matlab.ui.control.CheckBox
+        DownSampField                matlab.ui.control.NumericEditField
+        SpectrogramCheckBox          matlab.ui.control.CheckBox
+        AmbientSettingsPanel         matlab.ui.container.Panel
+        AmbientSettingsGrid          matlab.ui.container.GridLayout
+        AmbFreqListBox               matlab.ui.control.ListBox
+        AmbFreqListBoxLabel          matlab.ui.control.Label
+        FreqAllButton                matlab.ui.control.Button
+        FreqNoneButton               matlab.ui.control.Button
+        DiscreteSettingsPanel        matlab.ui.container.Panel
+        GridLayout3                  matlab.ui.container.GridLayout
+        FilterDropDown               matlab.ui.control.DropDown
+        FilterDropDownLabel          matlab.ui.control.Label
+        MinLengthField               matlab.ui.control.NumericEditField
+        MinLengthLabel               matlab.ui.control.Label
+        MinGapField                  matlab.ui.control.NumericEditField
+        MinGapLabel                  matlab.ui.control.Label
+        UnitDropDownLabel            matlab.ui.control.Label
+        FilePanel                    matlab.ui.container.Panel
+        DiscreteButtonGrid           matlab.ui.container.GridLayout
+        InputDiscreteTable           matlab.ui.control.Table
+        AddDiscreteRowButton         matlab.ui.control.Button
+        DeleteDiscreteRowButton      matlab.ui.control.Button
+        SaveButton                   matlab.ui.control.Button
+        LoadButton                   matlab.ui.control.Button
+        OutputGrid                   matlab.ui.container.GridLayout
+        OutputPathField              matlab.ui.control.EditField
+        OutputPathLabel              matlab.ui.control.Label
+        OutputPathSelect             matlab.ui.control.Button
+        WarningLabel                 matlab.ui.control.Label
+        AnalyzeButton                matlab.ui.control.Button
+        ResultsGrid                  matlab.ui.container.GridLayout
+        AmbientResultsPanel          matlab.ui.container.Panel
+        AmbientResultsPanelGrid      matlab.ui.container.GridLayout
+        AmbientResultsTabGroup       matlab.ui.container.TabGroup
+        LZeqTab                      matlab.ui.container.Tab
+        LZeqGrid                     matlab.ui.container.GridLayout
+        LZeqAxes                     matlab.ui.control.UIAxes
+        MSLTab                       matlab.ui.container.Tab
+        MSLGrid                      matlab.ui.container.GridLayout
+        MSLAxes                      matlab.ui.control.UIAxes
+        StatTable                    matlab.ui.control.Table
+        DiscreteResultsPanel         matlab.ui.container.Panel
+        DiscreteResultsPanelGrid     matlab.ui.container.GridLayout
+        DiscreteResultsTabGroup      matlab.ui.container.TabGroup
+        WaveformuPaTab               matlab.ui.container.Tab
+        WaveGrid                     matlab.ui.container.GridLayout
+        WaveAxes                     matlab.ui.control.UIAxes
+        WaveformdBTab                matlab.ui.container.Tab
+        WavedBGrid                   matlab.ui.container.GridLayout
+        WavedBAxes                   matlab.ui.control.UIAxes
+        SpectrogramTab               matlab.ui.container.Tab
+        SpecGrid                     matlab.ui.container.GridLayout
+        CurrSpecTimeRes              matlab.ui.control.NumericEditField
+        TimeResolutionLabel          matlab.ui.control.Label
+        SpecAxes                     matlab.ui.control.UIAxes
+        PSDTab                       matlab.ui.container.Tab
+        PSDGrid                      matlab.ui.container.GridLayout
+        PSDAxes                      matlab.ui.control.UIAxes
+        SaveWaveButton               matlab.ui.control.Button
+        ResultsButtonGrid            matlab.ui.container.GridLayout
+        SplitRecButton               matlab.ui.control.Button
+        SaveAllStatsButton           matlab.ui.control.Button
+        SaveStatsButton              matlab.ui.control.Button
+        GridLayout2                  matlab.ui.container.GridLayout
+        FileListBox                  matlab.ui.control.ListBox
+        FileListBoxLabel             matlab.ui.control.Label
     end
 
-    % Dependencies:
+% Dependencies:
     %   Signal Processing Toolbox
 
     % dev note: to confirm the package dependencies, run:
@@ -107,7 +112,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
         % "SR" -
         % "DownsampledSR" -
         % "Gain" -
-        % "RemOffset" -
+        % "RemoveOffsetCheck" -
         % "CalMode" -
         % "CalFile" -
         % "CalCurve" -
@@ -118,36 +123,76 @@ classdef signalFinder_exported < matlab.apps.AppBase
         % "SigSens" -
         % "AmbFreq" -
         % "AmbSens" -
-        % "AmbThresh" -
-        % "VThresh" -
+        % "Thresh" -
         % "SignalTable"
 
-        
+        version = "v1.1"
 
         tableColumnNames = [
-            "Path", "Filename", "WaveInRaw", "WaveIn", "AmbWaveform", ...
-            "SR", "DownsampledSR", "Gain", "RemOffset", "CalMode", ...
-            "CalFile", "CalCurve", "SigFreqU", "SigFreqStart", ...
-            "SigFreqEnd", "SigFreqMid", "SigSens", "AmbFreq", "AmbSens", ...
-            "AmbThresh", "VThresh", "SignalTable", "Spectrogram", "PSD", ...
+            "Path", ...
+            "Filename", ...
+            "WaveInRaw", ...
+            "WaveIn", ...
+            "AmbWaveform", ...
+            "SR", ...
+            "DownsampledSR", ...
+            "Gain", ...
+            "RemoveOffsetCheck", ...
+            "TimeOffset", ...
+            "CalMode", ...
+            "CalFile", ...
+            "CalCurve", ...
+            "SigFreqU", ...
+            "SigFreqStart", ...
+            "SigFreqEnd", ...
+            "SigFreqMid", ...
+            "SigSens", ...
+            "AmbFreq", ...
+            "AmbSens", ...
+            "Thresh", ...
+            "SignalTable", ...
+            "Spectrogram", ...
+            "PSD", ...
             "SpecTimeRes"
             ];
         vartypes = [
-            "string", "string", "cell", "cell", "cell", "double", ...
-            "double", "double", "logical", "categorical", "string", ...
-            "cell", "string", "double", "double", "double", "double", ...
-            "double", "double", "double", "double", "cell", "cell", "cell", ...
+            "string", ...
+            "string", ...
+            "cell", ...
+            "cell", ...
+            "cell", ...
+            "double", ...
+            "double", ...
+            "double", ...
+            "logical", ...
+            "double", ...
+            "categorical", ...
+            "string", ...
+            "cell", ...
+            "string", ...
+            "double", ...
+            "double", ...
+            "double", ...
+            "double", ...
+            "double", ...
+            "double", ...
+            "double", ...
+            "cell", ...
+            "cell", ...
+            "cell", ...
             "double",];
+
         % newDisplayRow = {'',0,0,true,'[100,200]',0,1.5};
         newRowCore = table;  % more fully defined in startupFcn()
         newRowWaveIn = table(0.0,0.0, 'VariableNames', {'Time','V'});
         % DEP newRowStatTableArray = array2table(double.empty(0,2));
         % DEP newRowAmbientWaveform = array2table(double.empty(0,2), 'VariableNames', {'Time','V'});
         CoreTable = struct;
-        colNameTranslate = ["Path","Path";"SR","SR|(Hz)";"Gain","Gain|(dB)";
-            "RemOffset","Remove|Offset";"SigFreqU","Sig Freq|(Hz)";
+        colNameTranslate = ["Path","Path";"SR","SR|(Hz)";
+            "Gain","Gain|(dB)";"RemoveOffsetCheck","Remove|Offset";
+            "TimeOffset","Start Time|Offset (s)"; "SigFreqU","Sig Freq|(Hz)";
             "SigFreqStart","Sig Freq|Start (Hz)";"SigFreqEnd","Sig Freq|End (Hz)";
-            "SigSens","Sig|Sens";"AmbThresh","Amb|Thresh"]
+            "SigSens","Sig|Sens";"Thresh","Thresh|(dB)"]
         recalcCols = ["SigFreqStart","SigFreqEnd", "SigFreqU","Path"]
         
 
@@ -205,6 +250,15 @@ classdef signalFinder_exported < matlab.apps.AppBase
             
     end
     
+    methods (Static)
+        % static methods/functions are those that work independently of the 
+        % app. They only use the values passed in (input arguments) and the
+        % code within the function, and return results without reading or
+        % modifying app properties or UI elements.
+
+        
+    end
+    
     methods (Access = private)
         
         function RefreshInputTable(app)
@@ -212,7 +266,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
             % inputDiscreteCols = ["Path","SR","Remove Offset",...
             %     "Sig Freq Start","Sig Freq End","Sig Sens","Amb Thresh"];
             % [~, indices] = ismember(inputNames, app.colNameTranslate(:, 1));
-            coreCols = ["Path", "SR", "Gain", "RemOffset", "SigFreqU", "SigSens", "AmbThresh"];
+            coreCols = ["Path", "SR", "Gain", "RemoveOffsetCheck", "TimeOffset", "SigFreqU", "SigSens", "Thresh"];
                 %app.colNameTranslate(indices,1);
             app.InputDiscreteTable.Data = app.CoreTable{:,coreCols};
 
@@ -346,12 +400,13 @@ classdef signalFinder_exported < matlab.apps.AppBase
             % can't be run without all required fields
 
             % Required variables: 
-            % Filename, WaveIn, SR, Gain, RemOffset,
+            % Filename, WaveIn, SR, Gain, RemoveOffsetCheck,
             % SigFreqStart, SigFreqEnd, SigFreqMid, SigSens, AmbFreq,
-            % AmbSens, AmbThresh
-            data = app.CoreTable(:,["Filename", "SR", "Gain", ...
-                "RemOffset", "SigFreqStart", "SigFreqEnd", "SigFreqMid", ...
-                "SigSens", "AmbFreq", "AmbSens", "AmbThresh"]);
+            % AmbSens, Thresh
+            data = app.CoreTable(:,["Filename", "SR", ...
+                "Gain", "RemoveOffsetCheck", "TimeOffset", "SigFreqStart", ...
+                "SigFreqEnd", "SigFreqMid", ...
+                "SigSens", "AmbFreq", "AmbSens", "Thresh"]);
             waveInCheck = app.CoreTable.WaveInRaw;
 
             % check that height of each element of waveInCheck is > SR
@@ -571,7 +626,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 %UpdateTable(app,row,'Sig Freq',10);
             end
             RefreshInputTable(app);
-            figure(app.UIFigure)
+            figure(app.SignalFinderUIFigure)
         end
 
         function SpecSettingsPopup(app, row)
@@ -583,8 +638,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             windowHeight = 136+10;
             % windowWidth = 404;
-            windowX = app.UIFigure.Position(1) + app.UIFigure.Position(3)/2 - windowWidth/2;
-            windowY = app.UIFigure.Position(2) + app.UIFigure.Position(4)/2 - windowHeight/2;
+            windowX = app.SignalFinderUIFigure.Position(1) + app.SignalFinderUIFigure.Position(3)/2 - windowWidth/2;
+            windowY = app.SignalFinderUIFigure.Position(2) + app.SignalFinderUIFigure.Position(4)/2 - windowHeight/2;
 
             exportWindow = uifigure('WindowStyle','modal');
             exportWindow.Position = [windowX windowY windowWidth windowHeight];
@@ -698,7 +753,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
             if app.SpectrogramCheckBox.Value
                 fs = app.CoreTable.DownsampledSR(row);
                 timeRes = app.CoreTable.SpecTimeRes(row);
-                [s,f,t] = pspectrum(app.CoreTable.WaveIn{row}.VFilt, fs, ...
+                [s,f,t] = pspectrum(app.CoreTable.WaveIn{row}.uPaFilt, fs, ...
                     'spectrogram','TimeResolution', timeRes, ...
                     'FrequencyLimits', [app.CoreTable.SigFreqStart(row)/2 app.CoreTable.SigFreqEnd(row)*2],'OverlapPercent',99,'Leakage',1);
                 app.CoreTable.Spectrogram{row}.s = s;
@@ -743,8 +798,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
         end
         
         function WaveformPlot(app, row)
-            % plot the waveform
-            plot(app.WaveAxes,app.CoreTable.WaveIn{row}.Time,app.CoreTable.WaveIn{row}.VFilt*1000,'Color','k');
+            % plot the waveform in µPa
+            plot(app.WaveAxes,app.CoreTable.WaveIn{row}.Time,app.CoreTable.WaveIn{row}.uPaFilt,'Color','k');
             
             % make sure x-axis is set to the correct boundaries
             xlim(app.WaveAxes,[0,max(app.CoreTable.WaveIn{row}.Time)]);
@@ -753,7 +808,14 @@ classdef signalFinder_exported < matlab.apps.AppBase
             
             % ambientWaveform = app.CoreTable.AmbWaveform{row};
             nSignals = height(app.CoreTable.SignalTable{row});
-            thresh = app.CoreTable.VThresh(row);
+            thresh = app.CoreTable.Thresh(row);
+            dBrefUnit = app.ReferenceLevelDropDown.Value;
+            if strcmpi(dBrefUnit, "1 µPa")
+                dBref = 1;
+            else
+                dBref = 20;
+            end
+            threshuPa = (10^(thresh/20))*dBref;
 
             % shade signal and ambient sections
             ylimits = ylim(app.WaveAxes);
@@ -775,27 +837,58 @@ classdef signalFinder_exported < matlab.apps.AppBase
                     [0.6,0.6,0.6], 'EdgeColor','none')
             end
 
-
             % reorder plots so line is on top of shading
             % https://www.mathworks.com/matlabcentral/answers/8350-how-send-to-back-patch-objects-in-a-graph
             set(app.WaveAxes,'children',flipud(get(app.WaveAxes,'children')));
-            yline(app.WaveAxes, thresh*1000);
+            yline(app.WaveAxes, threshuPa);
 
             % make sure x-axis is not overextended
             xlim(app.WaveAxes,[0,max(app.CoreTable.WaveIn{row}.Time)]);
 
             set(app.WaveAxes, 'YTickMode', 'auto', 'YTickLabelMode', 'auto', ...
                 'XTickMode', 'auto', 'XScale', 'linear')
-            % xlabel(app.WaveAxes, 'Time (s)')
-            % ylabel(app.WaveAxes, 'Amplitude (mV)')
+            
+            %% repeat for dB plot
+            plot(app.WavedBAxes,app.CoreTable.WaveIn{row}.Time,app.CoreTable.WaveIn{row}.dBFilt,'Color','k');
+
+            xlim(app.WavedBAxes,[0,max(app.CoreTable.WaveIn{row}.Time)]);
+            % shade signal and ambient sections
+            ylimits = ylim(app.WavedBAxes);
+
+            patch(app.WavedBAxes, ...
+                [app.CoreTable.SignalTable{row}.Onset(1)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Offset(1)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Offset(1)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Onset(1)/Fs], ...
+                [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
+                [0.8,0.8,0.8], 'EdgeColor','none')
+            for i = 2:nSignals
+                patch(app.WavedBAxes, ...
+                    [app.CoreTable.SignalTable{row}.Onset(i)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Onset(i)/Fs], ...
+                    [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
+                    [0.6,0.6,0.6], 'EdgeColor','none')
+            end
+            % reorder plots so line is on top of shading
+            % https://www.mathworks.com/matlabcentral/answers/8350-how-send-to-back-patch-objects-in-a-graph
+            set(app.WavedBAxes,'children',flipud(get(app.WavedBAxes,'children')));
+            yline(app.WavedBAxes, thresh);
+
+            % make sure x-axis is not overextended
+            xlim(app.WavedBAxes,[0,max(app.CoreTable.WaveIn{row}.Time)]);
+
+            set(app.WavedBAxes, 'YTickMode', 'auto', 'YTickLabelMode', 'auto', ...
+                'XTickMode', 'auto', 'XScale', 'linear')
 
         end
 
         function PSDUpdate(app, row)
                 
             fs = app.CoreTable.DownsampledSR(row);
-            
-            [pxx,f]=pwelch(app.CoreTable.WaveIn{row}.VFilt,[],[],[],fs);
+            % pwelch uses the uPa waveform rather than the dB one
+            [pxx,f]=pwelch(app.CoreTable.WaveIn{row}.uPaFilt,[],[],[],fs);
             app.CoreTable.PSD{row}.pxx = pxx;
             app.CoreTable.PSD{row}.f = f;
         end
@@ -866,8 +959,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             windowHeight = 104+10;
             % windowWidth = 404;
-            windowX = app.UIFigure.Position(1) + app.UIFigure.Position(3)/2 - windowWidth/2;
-            windowY = app.UIFigure.Position(2) + app.UIFigure.Position(4)/2 - windowHeight/2;
+            windowX = app.SignalFinderUIFigure.Position(1) + app.SignalFinderUIFigure.Position(3)/2 - windowWidth/2;
+            windowY = app.SignalFinderUIFigure.Position(2) + app.SignalFinderUIFigure.Position(4)/2 - windowHeight/2;
 
             exportWindow = uifigure('WindowStyle','modal');
             exportWindow.Position = [windowX windowY windowWidth windowHeight];
@@ -1026,7 +1119,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 SpectrogramPlot(app, row)
                 PSDPlot(app, row)
 
-                cols = ["OnsetS", "rms", "Peak", "SNR", "SNRdiff", "CSEL"];
+                cols = ["OnsetString", "OffsetString", "VocalType", "Duration", ... 
+                    "rms", "Peak", "spl90"];
                 app.StatTable.Data = app.CoreTable.SignalTable{row}{:,cols};
                 rowCount = size(app.CoreTable.SignalTable{row},1);
                 rows = ['amb',string(1:(rowCount-1))];
@@ -1049,13 +1143,35 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 'VariableNames', app.tableColumnNames, 'VariableTypes', app.vartypes);
             % app.CoreTable = struct("Path","", "Filename","", ...
             %     "WaveIn",app.newRowWaveIn, "AmbWaveform",app.newRowWaveIn, ...
-            %     "SR",0, "Gain",0, "RemOffset",true, "CalMode","auto", ...
+            %     "SR",0, "Gain",0, "RemoveOffsetCheck",true, "CalMode","auto", ...
             %     "CalFile","", "CalCurve",table, "SigFreqU",[100, 200], ...
             %     "SigFreqStart",100, "SigFreqEnd",200, "SigFreqMid",150, ...
-            %     "SigSens",0, "AmbFreq",0, "AmbSens",0, "AmbThresh",1.5, ...
-            %     "VThresh",0, "SignalTable",table);
+            %     "SigSens",0, "AmbFreq",0, "AmbSens",0, "Thresh",1.5, ...
+            %     "SignalTable",table);
             app.NumFiles = 0;
 
+        end
+        
+        function SPL90 = calcT90(app, p)
+            % calculate cumulative energy
+            sumEnergy = cumsum(p.^2);
+            sumEnergy = sumEnergy/sumEnergy(end);
+
+            % find the 5% and 95% points
+            iStart = find(sumEnergy >= 0.05, 1, 'first');
+            iEnd = find(sumEnergy >= 0.95, 1, 'first');
+
+            % get section of waveform between the 5% and 95%
+            p90 = p(iStart:iEnd);
+
+            % get the dB reference 
+            dBrefUnit = app.ReferenceLevelDropDown.Value;
+            if strcmpi(dBrefUnit, "1 µPa")
+                dBref = 1;
+            else
+                dBref = 20;
+            end
+            SPL90 = 20*log10(rms(p90)/dBref);
         end
 
         function CursorWait(app, status)
@@ -1071,31 +1187,53 @@ classdef signalFinder_exported < matlab.apps.AppBase
             end
             
             if app.WorkingCount > 0
-                app.UIFigure.Pointer = 'watch';  % update the cursor to show it's working
+                app.SignalFinderUIFigure.Pointer = 'watch';  % update the cursor to show it's working
             else
-                app.UIFigure.Pointer = 'arrow';
+                app.SignalFinderUIFigure.Pointer = 'arrow';
                 app.WorkingCount = 0;
             end
         end
     end
-    
+
 
     % Callbacks that handle component events
     methods (Access = private)
 
         % Code that executes after component creation
         function startupFcn(app)
-            app.newRowCore = table("", "", {app.newRowWaveIn}, ...
-                {app.newRowWaveIn}, {app.newRowWaveIn}, 0, 0, 0, true, ...
-                "manual", "", {app.calCurve}, "[100, 200]", 100, 200, ...
-                150, 0, 0, 0, 1.5, 0, {app.calCurve}, {app.signalTable}, ...
-                {app.signalTable}, 0.5, 'VariableNames', app.tableColumnNames);
+            app.newRowCore = table( ...
+                "", ... % Path
+                "", ...  % Filename
+                {app.newRowWaveIn}, ...  % WaveInRaw (table)
+                {app.newRowWaveIn}, ...  % WaveIn (table) 
+                {app.newRowWaveIn}, ...  % AmbWaveform (table)
+                0, ...  % SR
+                0, ...  % DownsampledSR
+                0, ...  % Gain
+                true, ...  % RemoveOffsetCheck
+                0, ...  % TimeOffset
+                "manual", ...  % CalMode
+                "", ...  % CalFile
+                {app.calCurve}, ...  % CalCurve
+                "[100, 200]", ...  % SigFreqU
+                100, ...  % SigFreqStart
+                200, ...  % SigFreqEnd
+                150, ...  % SigFreqMid
+                0, ...  % SigSens
+                0, ...  % AmbFreq
+                0, ...  % AmbSens
+                1.5, ...  % Thresh
+                {app.calCurve}, ...  % SignalTable
+                {app.signalTable}, ...  % Spectrogram
+                {app.signalTable}, ...  % PSD
+                0.5, ...  % SpecTimeRes
+                'VariableNames', app.tableColumnNames);
 
             ResetCoreTable(app);
             
             app.thirdOctTable = table(app.thirdOctBands, app.thirdOctBandE, app.thirdOctBandW, 'VariableNames', {'Middle', 'Edges', 'Width'});
 
-            app.InputDiscreteTable.ColumnFormat = {'char', 'numeric', 'numeric', 'logical', 'char', 'bank', 'bank'};
+            app.InputDiscreteTable.ColumnFormat = {'char', 'numeric', 'numeric', 'logical', 'numeric', 'char', 'bank', 'bank'};
             AddNewRow(app,0);
 
             %app.NumFiles = app.NumFiles +1;
@@ -1111,6 +1249,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             app.ResultsGrid.ColumnWidth = {'fit','1x',0,'fit'};
             app.AnalysisSettingsGrid.ColumnWidth = {'fit','fit', 'fit', '1x', 0,'fit'};
+
+            app.VersionLabel.Text = app.version;
         end
 
         % Button pushed function: SaveWaveButton
@@ -1175,6 +1315,13 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 sigSens = app.CoreTable.SigSens(j); %GetValue(app, j, 'Sig|Sens');
                 ambSens = app.CoreTable.SigSens(j); %GetValue(app, j, 'Amb|Sens');
                 calUnit = app.UnitDropDown.Value;
+                dBrefUnit = app.ReferenceLevelDropDown.Value;
+                if strcmpi(dBrefUnit, "1 µPa")
+                    dBref = 1;
+                else
+                    dBref = 20;
+                end
+                
                 gain = app.CoreTable.Gain(j); %GetValue(app, j, 'Gain');
                 if strcmp(calUnit, 'dB re 1V/µPa')
                     ambTF = 10^((ambSens + gain)/20);  % ambient transfer function for dB re 1V/uPa
@@ -1185,6 +1332,9 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 elseif strcmp(calUnit, 'dB re 1µPa')
                     ambTF = 10^(((ambSens + gain)/20));  % ambient transfer function for dB re 1uPa
                     sigTF = 10^(((sigSens + gain)/20));  % signal transfer function for dB re 1uPa
+                elseif strcmp(calUnit, 'mV/Pa')
+                    ambTF = ambSens;  % ambient transfer function
+                    sigTF = sigSens + gain;  % signal transfer function for dB re 1uPa
                 else
                     % other units go here
                 end
@@ -1193,16 +1343,26 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 wavPath = app.CoreTable.Path(j);
         
                 % Check if the file is already cached
-                if app.audioCache.isKey(wavPath)
+                if false  %app.audioCache.isKey(wavPath)
                     waveIn = app.audioCache(wavPath); % Use cached data (table of time, voltage, pressure)
                     Fs = app.CoreTable.SR(j); %GetValue(app,j,'SR');
                 else
                     [waveRaw, Fs] = audioread(wavPath); % Load from disk
                     dt = 1/Fs;
                     timeVec = 0:dt:dt*(length(waveRaw)-1);
+
+                    % remove offset, if specified
+                    timeOffset = app.CoreTable.TimeOffset(j);
+                    sampOffset = round(timeOffset/dt);
+                    timeOffset = sampOffset*dt;
+                    
+                    timeVec = timeVec(sampOffset+1:end);  % the +1 is because MATLAB is a 1-indexed language, and an offset of 0 would return sampOffset=0
+                    waveRaw = waveRaw(sampOffset+1:end);  % the +1 is because MATLAB is a 1-indexed language, and an offset of 0 would return sampOffset=0
                     % waveTemp = [timeVec', waveIn];
                     %app.CoreTable(row,:).WaveIn = table(timeVec',waveIn, 'VariableNames', ["Time", "V"]);
                     waveIn = table(timeVec', waveRaw, 'VariableNames', ["Time", "V"]);
+
+
                     %% convert waveform to uPa
                     if strcmp(calUnit, 'dB re 1µPa')
                         % transfer function for end-to-end calibration
@@ -1212,12 +1372,14 @@ classdef signalFinder_exported < matlab.apps.AppBase
                     end
 
                     waveIn.uPa = signalWaveform;
+                    waveIn.dB = 20*log10(abs(signalWaveform)/dBref);
                     
                     app.audioCache(wavPath) = waveIn; % Cache it
                 end
 
-                ambThresh = app.CoreTable.AmbThresh(j);
-                removeOffset = app.CoreTable.RemOffset(j);
+                thresh = app.CoreTable.Thresh(j);
+                threshuPa = (10^(thresh/20))*dBref;
+                removeOffset = app.CoreTable.RemoveOffsetCheck(j);
                 downsamplePerform = app.DownSampCheckBox.Value;
                 % waveIn = app.CoreTable.WaveInRaw{j};
 
@@ -1252,8 +1414,6 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 if strcmpi(app.AnalysisMode, "discrete")
                     
                     % grab other variables
-                    % sigFreq = GetValue(app, j, 'Sig Freq');
-                    % ambFreq = GetValue(app, j, 'Amb Freq');
                     minGap = app.MinGapField.Value;
                     minSoundLength = app.MinLengthField.Value;
                     
@@ -1261,7 +1421,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
                     filterMode = app.FilterDropDown.Value;
                     if strcmpi(filterMode, 'none')
                         % user has selected not to filter at all
-                        waveIn.VFilt = waveIn.uPa;
+                        waveIn.uPaFilt = waveIn.uPa;
+                        waveIn.dBFilt = 20*log10(abs(waveIn.uPaFilt)/dBref);
                         app.CoreTable.WaveIn{j} = waveIn;
                     else
                         message = sprintf('Analyzing file %d of %d (Filtering waveform)', j, app.NumFiles);
@@ -1274,13 +1435,14 @@ classdef signalFinder_exported < matlab.apps.AppBase
                         fc=[f1 f2]/(Fs/2);
                         [b,a]=butter(3,fc);
 
-                        waveIn.VFilt = filtfilt(b,a,waveIn.uPa);
+                        waveIn.uPaFilt = filtfilt(b,a,waveIn.uPa);
+                        waveIn.dBFilt = 20*log10(abs(waveIn.uPaFilt)/dBref);
                         %waveIn.VFilt = filtfilt(d,waveIn.V);
                         app.CoreTable.WaveIn{j} = waveIn;  % update the saved waveform so we can separately update the spectrogram, if needed
 
                         % make sure the waveform didn't get totally filtered away
                         try
-                            assert(sum(isnan(app.CoreTable.WaveIn{j}.VFilt)) == 0)
+                            assert(sum(isnan(app.CoreTable.WaveIn{j}.uPaFilt)) == 0)
                         catch
                             BlockOutput(app, true)
                             UpdateWarning(app,'Waveform filtered to nothing, please check filter settings')
@@ -1290,17 +1452,15 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
                     end
                     %% Identify onsets and offsets
-                    % -get first 2000 samples and calculate threshold for signal onset-
-                    waveIntro = waveIn(1:2000,:);  % redefine waveIntro because it didn't include VFilt before
-                    thresh = ambThresh; % max(abs(waveIntro.VFilt))*ambThresh;
-                    app.CoreTable.VThresh(j) = thresh;
+                    % % -get first 2000 samples and calculate threshold for signal onset-
+                    % waveIntro = waveIn(1:2000,:);  % redefine waveIntro because it didn't include VFilt before
+                    % thresh = max(abs(waveIntro.VFilt))*Thresh;
 
-                    % -now actually find the onsets-            
-                    
-                    sigWave = envelope(waveIn.VFilt, 5000);  % use envelope of signal 
+                    % -now actually find the onsets-
+                    sigWave = envelope(waveIn.uPaFilt, 5000);  % use envelope of signal 
                     
                     % other method: find continuous strings of points above threshold and classify each string as a signal
-                    sigwaveT = sigWave > thresh;
+                    sigwaveT = sigWave > threshuPa;
                     sigStartsTemp = strfind([0 sigwaveT' 0], [0 1]);  %find starts of sequences above threshold
                     % for each start point, find the closest following
                     % point where the waveform is actually above the
@@ -1350,49 +1510,73 @@ classdef signalFinder_exported < matlab.apps.AppBase
                     %% get ambient measurements
                     if nSignals == 0
                         % Create empty signal table
-                        tempSignalTable = array2table(zeros(1,9), ...
-                            'VariableNames',["SigNum","Onset","Offset", "OnsetS", "rms", "Peak", "SNR", "SNRdiff", "CSEL"]);
+                        tempSignalTable = array2table(zeros(1,13), ...
+                            'VariableNames',["SigNum", "Onset","Offset", ...
+                            "OnsetS", "OnsetString", "OffsetString", ...
+                            "VocalType", "Duration", "rms", "Peak", ...
+                            "spl90", "SNR", "SNRdiff"]);
                         % no signals, so just use first full second
                         ambOnset = 1;
-                        app.CoreTable.AmbWaveform{j} = waveIn(ambOnset:1*Fs,:);
+                        ambOffset = 1*Fs;
+                        app.CoreTable.AmbWaveform{j} = waveIn(ambOnset:ambOffset,:);
                         UpdateWarning(app, 'No signal detected above ambient noise, onset of signal(s) cannot be detected')
                         
-                        ambRMSV = rms(app.CoreTable.AmbWaveform{j}.VFilt);
-                        ambPeakV = max(abs(app.CoreTable.AmbWaveform{j}.VFilt));
+                        ambRMSuPa = rms(app.CoreTable.AmbWaveform{j}.uPaFilt);
+                        ambPeakuPa = max(abs(app.CoreTable.AmbWaveform{j}.uPaFilt));
                     else
-                        tempSignalTable = array2table([signalI', sigStarts, sigEnds, zeros(nSignals,6)], ...
-                            'VariableNames',["SigNum","Onset","Offset", "OnsetS", "rms", "Peak", "SNR", "SNRdiff", "CSEL"]);  % Signal number, Onset, Offset
+                        tempSignalTable = array2table([signalI', sigStarts, sigEnds, zeros(nSignals,10)], ...
+                            'VariableNames',["SigNum","Onset","Offset", ...
+                            "OnsetS", "OnsetString", "OffsetString", ...
+                            "VocalType", "Duration", "rms", "Peak", ...
+                            "spl90", "SNR", "SNRdiff",]);  % Signal number, Onset, Offset
                         % signals detected, use 1 second before first signal
                         if tempSignalTable.Onset(1) < 1*Fs
                             % first signal is less than 1 second in
                             ambOnset = nan;
-                            ambRMSV = nan;
-                            ambPeakV = nan;
+                            ambOffset = nan;
+                            ambRMSuPa = nan;
+                            ambPeakuPa = nan;
                             % warn user
                             sigOnset = tempSignalTable.Onset(1);
                             UpdateWarning(app, sprintf('Signal onset less than 1 second from waveform start, cannot get 1 sec of ambient noise (%0.2f s)', sigOnset/Fs))
                         else
                             ambOnset = round(tempSignalTable.Onset(1)-1*Fs);
+                            ambOffset = tempSignalTable.Onset(1);
                             UpdateWarning(app)
                             sig1Onset = tempSignalTable.Onset(1);
                             app.CoreTable.AmbWaveform{j} = waveIn(ambOnset:sig1Onset-1,:);
                             
-                            ambRMSV = rms(app.CoreTable.AmbWaveform{j}.VFilt);
-                            ambPeakV = max(abs(app.CoreTable.AmbWaveform{j}.VFilt));
+                            ambRMSuPa = rms(app.CoreTable.AmbWaveform{j}.uPaFilt);
+                            ambPeakuPa = max(abs(app.CoreTable.AmbWaveform{j}.uPaFilt));
                         end
                        
                     end
 
                     % Convert RMS and peak to dB
-                    ambRMS = 20*log10(ambRMSV);
-                    ambPeak = 20*log10(ambPeakV);
+                    ambRMS = 20*log10(ambRMSuPa);
+                    ambPeak = 20*log10(ambPeakuPa);
                     
                     tempSignalTable = tempSignalTable([1,1:end], :);  % add empty row to top
-                    tempSignalTable(1,:) = table(0, ambOnset, ambOnset+Fs, ambOnset/Fs, ambRMS, ambPeak, NaN, NaN, NaN);
+                    tempSignalTable = convertvars(tempSignalTable, ["OnsetString","OffsetString","VocalType"], 'string');
+                    tempSignalTable(1,:) = table( ...
+                        0, ...
+                        ambOnset, ...
+                        ambOffset, ...
+                        ambOnset/Fs + timeOffset, ...
+                        string(seconds(ambOnset/Fs),"mm:ss.SS"), ...
+                        string(seconds(ambOffset/Fs),"mm:ss.SS"),...
+                        "ambient", ...
+                        (ambOffset - ambOnset)/Fs, ...
+                        ambRMS, ...
+                        ambPeak, ...
+                        NaN, ...
+                        NaN, ...
+                        NaN ...
+                        );
                     % app.statTableArray{j}(1,:) = {ambOnset/Fs, ambRMS, ambPeak, NaN, NaN};
                     
                     %% loop through detected signals and get measurements (rms, peak, SNR, CSEL) for each
-                    recordLength = 0;  % for calculating CSEL, cumsum of total durations
+                    % recordLength = 0;  % for calculating CSEL, cumsum of total durations
                     
                     for i = 1:nSignals
                         signalOnset = tempSignalTable.Onset(i+1);
@@ -1403,6 +1587,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
                                 % yline(thresh*1000);
                                 BlockOutput(app, true)
                                 app.AnalyzeButton.Enable = "on";
+                                app.AnalyzeButton.Text = "Analyze";
+                                CursorWait(app, 'off')
                                 error('Error: Signal onset less than 1 second from waveform start, cannot get 1 sec of ambient noise (%0.2f s)', signalOnset/Fs)
                             end
                         end
@@ -1413,12 +1599,13 @@ classdef signalFinder_exported < matlab.apps.AppBase
         
                         signalWaveform = waveIn(signalOnset:signalOffset,:);
                         %% Get peak and rms
-                        sigPeakV = max(abs(signalWaveform.VFilt));
-                        sigRMSV = rms(signalWaveform.VFilt);
+                        sigPeakuPa = max(abs(signalWaveform.uPaFilt));
+                        sigRMSuPa = rms(signalWaveform.uPaFilt);
+                        sigSPL90 = app.calcT90(signalWaveform.uPaFilt);
                         
                         % convert to dB
-                        sigRMS = 20*log10(sigRMSV);  % rmsV*TF = uPa, then 20*log10() to get dB re 1 uPa
-                        sigPeak = 20*log10(sigPeakV);
+                        sigRMS = 20*log10(sigRMSuPa/dBref);  % rmsV*TF = uPa, then 20*log10() to get dB re 1 uPa
+                        sigPeak = 20*log10(sigPeakuPa/dBref);
 
 
                         %% Get SNR
@@ -1426,25 +1613,31 @@ classdef signalFinder_exported < matlab.apps.AppBase
                         snr = (sigRMS/ambRMS)^2;
                         snrDiff = sigRMS - ambRMS;
         
-                        %% Get SEL
-                        % CSEL options:
-                        %   https://dosits.org/science/advanced-topics/sound-pressure-levels-and-sound-exposure-levels/
-                        %     CSEL is SEL_ss + 10*log_10(N)
-                        %     where SEL_ss is SEL of single pulse and N is number of pulses
-                        %   Theobald et al 2009 - https://www.researchgate.net/publication/229030710_CUMULATIVE_NOISE_EXPOSURE_ASSESSMENT_FOR_MARINE_MAMMALS_USING_SOUND_EXPOSURE_LEVEL_AS_A_METRIC
-                        %     "The SEL for each impulsive noise event can be aggregated by summation to calculate the total SEL
-                        %     (or cumulative SEL) for the entire exposure duration"
-                        %   From selcalc.m
-                        recordLength = recordLength + length(signalWaveform.VFilt)/Fs;
-                        sigSEL = sigRMS + 10*log10(recordLength);
+                        % %% Get SEL
+                        % % CSEL options:
+                        % %   https://dosits.org/science/advanced-topics/sound-pressure-levels-and-sound-exposure-levels/
+                        % %     CSEL is SEL_ss + 10*log_10(N)
+                        % %     where SEL_ss is SEL of single pulse and N is number of pulses
+                        % %   Theobald et al 2009 - https://www.researchgate.net/publication/229030710_CUMULATIVE_NOISE_EXPOSURE_ASSESSMENT_FOR_MARINE_MAMMALS_USING_SOUND_EXPOSURE_LEVEL_AS_A_METRIC
+                        % %     "The SEL for each impulsive noise event can be aggregated by summation to calculate the total SEL
+                        % %     (or cumulative SEL) for the entire exposure duration"
+                        % %   From selcalc.m
+                        % recordLength = recordLength + length(signalWaveform.VFilt)/Fs;
+                        % sigSEL = sigRMS + 10*log10(recordLength);
                         %%
-        
-                        tempSignalTable.OnsetS(i+1) = signalOnset/Fs;
+                        
+                        signalOnsetS = (signalOnset/Fs)+timeOffset;
+                        signalOffsetS = (signalOffset/Fs)+timeOffset;
+
+                        tempSignalTable.OnsetS(i+1) = signalOnsetS;
                         tempSignalTable.rms(i+1) = sigRMS;
                         tempSignalTable.Peak(i+1) = sigPeak;
-                        tempSignalTable.SNR(i+1) = snr;
-                        tempSignalTable.SNRdiff(i+1) = snrDiff;
-                        tempSignalTable.CSEL(i+1) = sigSEL;
+                        tempSignalTable.spl90(i+1) = sigSPL90;
+                        
+                        tempSignalTable.OnsetString(i+1) = string(seconds(signalOnsetS),"mm:ss.SS");
+                        tempSignalTable.OffsetString(i+1) = string(seconds(signalOffsetS),"mm:ss.SS");
+                        tempSignalTable.VocalType(i+1) = "potential call";
+                        tempSignalTable.Duration(i+1) = (signalOffsetS - signalOnsetS)*1000;
                         
                         % app.statTableArray{j}(i+1,:) = {signalOnset/Fs, sigRMS, sigPeak, snr, sigSEL};
                         % % app.StatTable.Data(i,:) = {i, rmsSignal, sigPeak, snr, frequencydomainSEL};
@@ -1478,7 +1671,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
                     %% Calculate rms SPL (dB re 1uPa)
                     % sigRMS=20*log10(std(1000000*(signalWaveform-mean(signalWaveform)))); % Calculate dB re 1uPa
-                    sigRMS=20*log10(std((signalWaveform-mean(signalWaveform)))); % Calculate dB re 1uPa
+                    sigRMS=20*log10(std((signalWaveform-mean(signalWaveform)))/dBref); % Calculate dB re 1uPa
 
 
                     %% Perform third octave noise analysis to obtain the frequency content of the ambient noise:
@@ -1618,31 +1811,68 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
         % Button pushed function: SaveAllStatsButton
         function SaveAllStatsButtonPushed(app, event)
-            % loop through all analyzed files and export stats for each
+            % loop through all analyzed files, concatenate into single table, and export
             outPath = app.OutputPathField.Value;
+            tempName = "summary_stats.csv";
             if isempty(outPath)
-                path = uigetdir();
+                [tempName, path] = uiputfile( {'*.csv;', 'Comma-Separated (*.csv)'},'Save File', tempName);
             else
-                path = outPath;
+                [tempName, path] = uiputfile( {'*.csv;', 'Comma-Separated (*.csv)'},'Save File', fullfile(outPath, tempName));
             end
+            
             if path > 0
                 if strcmpi(app.AnalysisMode, "discrete")
-                    cols = ["SigNum", "OnsetS", "rms", "Peak", "SNR", "SNRdiff", "CSEL"];
-                    colNames = [{'Signal Number'}, app.StatTable.ColumnName(:)'];
+                    cols = ["OnsetString", "OffsetString", ...
+                            "VocalType", "Duration","VocalType", "rms", "Peak", "rms90"];
+                    colNames = app.StatTable.ColumnName(:)';
                 else
                     cols = ["Band", "LZeq", "MSL", "sigRMS", "Clip"];
                     colNames = [{'Band'}, app.StatTable.ColumnName(:)'];
                 end
+                tempCell = cell(1,app.NumFiles);  % create cell array for the output tables as a way of preallocating space
+
                 for i=1:app.NumFiles
-                    wavPath = GetValue(app, i, 'Path');
-                    [~,tempName] = fileparts(wavPath);
-                    tempName = strcat(tempName, '_stats', '.csv');
+                    
                     tempTable = app.CoreTable.SignalTable{i}{:,cols};
                     tempTable = array2table(tempTable);
                     tempTable.Properties.VariableNames = colNames;
-                    writetable(tempTable,fullfile(path,tempName))
+                    filenameCol = repmat(app.CoreTable.Filename{i}, height(tempTable),1);  % create a column with the filename
+                    tempTable = addvars(tempTable, filenameCol, 'Before', 1, 'NewVariableNames', "Filename");  % insert the filename into the table
+                    
+                    tempCell{i} = tempTable;
+                    
                 end
+                combinedTable = vertcat(tempCell{:});
+                tempTable.Properties.VariableNames = replace(test.Properties.VariableNames, "|", " ");
+                writetable(combinedTable,fullfile(path,tempName), 'Encoding', 'UTF-8')
             end
+            % % Old version: loop through all analyzed files and export
+            % % stats for each as separate file
+            % outPath = app.OutputPathField.Value;
+            % if isempty(outPath)
+            %     path = uigetdir();
+            % else
+            %     path = outPath;
+            % end
+            % if path > 0
+            %     if strcmpi(app.AnalysisMode, "discrete")
+            %         cols = ["SigNum", "OnsetString", "OffsetString", ...
+            %                 "VocalType", "Duration","VocalType", "rms", "Peak"];
+            %         colNames = [{'Signal Number'}, app.StatTable.ColumnName(:)'];
+            %     else
+            %         cols = ["Band", "LZeq", "MSL", "sigRMS", "Clip"];
+            %         colNames = [{'Band'}, app.StatTable.ColumnName(:)'];
+            %     end
+            %     for i=1:app.NumFiles
+            %         wavPath = GetValue(app, i, 'Path');
+            %         [~,tempName] = fileparts(wavPath);
+            %         tempName = strcat(tempName, '_stats', '.csv');
+            %         tempTable = app.CoreTable.SignalTable{i}{:,cols};
+            %         tempTable = array2table(tempTable);
+            %         tempTable.Properties.VariableNames = colNames;
+            %         writetable(tempTable,fullfile(path,tempName))
+            %     end
+            % end
         end
 
         % Button pushed function: SplitRecButton
@@ -1794,13 +2024,22 @@ classdef signalFinder_exported < matlab.apps.AppBase
             selectedButton = app.ModeButtonGroup.SelectedObject.Text;
             if strcmpi(selectedButton, "Discrete")
                 app.AnalysisMode = "Discrete";
-                newColNames = {'File Number', 'Call Start|Time'; ...
-                    'Call End|Time'; 'Vocal Type'; 'Call Duration|(ms)'; ...
-                    'RMS|(dB re 1µPa)'; 'Peak|(dB re 1µPa)'};
+                dBrefUnit = app.ReferenceLevelDropDown.Value;
+                if strcmpi(dBrefUnit, "1 µPa")
+                    dBref = 1;
+                else
+                    dBref = 20;
+                end
+                newColNames = {'Call Start|Time'; ...
+                        'Call End|Time'; 'Vocal Type'; 'Duration|(ms)'; ...
+                        sprintf('RMS|(dB re %d µPa)', dBref); ...
+                        sprintf('Peak|(dB re %d µPa)', dBref); ...
+                        sprintf('SPL 90%|(dB re %d µPa)', dBref)};
+                
                 % app.StatTable.('newCol') = zeros(height(app.StatTable),1);
                 % app.StatTable.('newCol2') = zeros(height(app.StatTable),1);
                 app.StatTable.ColumnName = newColNames;
-                app.StatTable.ColumnWidth = {60, 86, 86, 76, 76, 76};
+                app.StatTable.ColumnWidth = {60,75,75,75,75,86,86,86};
                 app.AmbientSettingsPanel.Enable = "off";
                 app.MinGapField.Enable = "on";
                 app.MinLengthField.Enable = "on";
@@ -1808,6 +2047,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 app.AnalysisSettingsGrid.ColumnWidth = {'fit','fit', 'fit', '1x', 0,'fit'};
                 app.DiscreteSettingsPanel.Enable = "on";
                 app.SkipAmbientCheckBox.Visible = "on";
+                app.SpectrogramCheckBox.Visible = "on";
             else
                 app.AnalysisMode = "Ambient";
                 app.StatTable.ColumnName = {'LZeq'; 'MSL'; 'RMS|(dB re 1µPa)'; 'Clipping?'};
@@ -1819,6 +2059,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 app.DiscreteSettingsPanel.Enable = "off";
                 app.AnalysisSettingsGrid.ColumnWidth = {'fit','fit', 'fit', '1x','fit',0};
                 app.SkipAmbientCheckBox.Visible = "off";
+                app.SpectrogramCheckBox.Visible = "off";
             end
         end
 
@@ -1908,10 +2149,10 @@ classdef signalFinder_exported < matlab.apps.AppBase
                     app.CoreTable.Path(row) = tempTable.Path(row);
                     app.CoreTable.SR(row) = tempTable.SR(row);
                     app.CoreTable.Gain(row) = tempTable.Gain(row);
-                    app.CoreTable.RemOffset(row) = tempTable.RemOffset(row);
+                    app.CoreTable.RemoveOffsetCheck(row) = tempTable.RemoveOffsetCheck(row);
                     app.CoreTable.SigFreqU(row) = tempTable.SigFreqU(row);
                     app.CoreTable.SigSens(row) = tempTable.SigSens(row);
-                    app.CoreTable.AmbThresh(row) = tempTable.AmbThresh(row);
+                    app.CoreTable.Thresh(row) = tempTable.Thresh(row);
                     % fill other values in CoreTable: Filename, CalMode,
                     % SigFreqStart, SigFreqEnd, SigFreqMid,
                     UpdateFreqs(app, row)
@@ -1995,6 +2236,29 @@ classdef signalFinder_exported < matlab.apps.AppBase
             % AnalyzeEnable(app)
             CursorWait(app, 'off')
         end
+
+        % Value changed function: SpectrogramCheckBox
+        function SpectrogramCheckBoxValueChanged(app, event)
+            value = app.SpectrogramCheckBox.Value;
+            
+        end
+
+        % Value changed function: ReferenceLevelDropDown
+        function ReferenceLevelDropDownValueChanged(app, event)
+            value = app.ReferenceLevelDropDown.Value;
+            
+            if strcmpi(value, "1 µPa")
+                dBref = 1;
+            else
+                dBref = 20;
+            end
+            newColNames = {'Call Start|Time'; ...
+                    'Call End|Time'; 'Vocal Type'; 'Duration|(ms)'; ...
+                    sprintf('RMS|(dB re %d µPa)', dBref); ...
+                    sprintf('Peak|(dB re %d µPa)', dBref); ...
+                    sprintf('SPL 90%|(dB re %d µPa)', dBref)};
+            app.StatTable.ColumnName = newColNames;
+        end
     end
 
     % Component initialization
@@ -2003,15 +2267,15 @@ classdef signalFinder_exported < matlab.apps.AppBase
         % Create UIFigure and components
         function createComponents(app)
 
-            % Create UIFigure and hide until all components are created
-            app.UIFigure = uifigure('Visible', 'off');
-            app.UIFigure.Position = [100 100 1100 668];
-            app.UIFigure.Name = 'MATLAB App';
+            % Create SignalFinderUIFigure and hide until all components are created
+            app.SignalFinderUIFigure = uifigure('Visible', 'off');
+            app.SignalFinderUIFigure.Position = [100 100 1200 670];
+            app.SignalFinderUIFigure.Name = 'Signal Finder';
 
             % Create GridLayout
-            app.GridLayout = uigridlayout(app.UIFigure);
+            app.GridLayout = uigridlayout(app.SignalFinderUIFigure);
             app.GridLayout.ColumnWidth = {'1x'};
-            app.GridLayout.RowHeight = {'1x', 23, 23, '3x', 'fit'};
+            app.GridLayout.RowHeight = {'fit', 23, 23, '3x', 'fit'};
             app.GridLayout.ColumnSpacing = 8;
             app.GridLayout.RowSpacing = 8;
             app.GridLayout.Padding = [8 8 8 8];
@@ -2112,12 +2376,12 @@ classdef signalFinder_exported < matlab.apps.AppBase
             app.DiscreteResultsTabGroup.Layout.Row = 1;
             app.DiscreteResultsTabGroup.Layout.Column = 1;
 
-            % Create WaveformTab
-            app.WaveformTab = uitab(app.DiscreteResultsTabGroup);
-            app.WaveformTab.Title = 'Waveform';
+            % Create WaveformuPaTab
+            app.WaveformuPaTab = uitab(app.DiscreteResultsTabGroup);
+            app.WaveformuPaTab.Title = 'Waveform (uPa)';
 
             % Create WaveGrid
-            app.WaveGrid = uigridlayout(app.WaveformTab);
+            app.WaveGrid = uigridlayout(app.WaveformuPaTab);
             app.WaveGrid.ColumnWidth = {'1x'};
             app.WaveGrid.RowHeight = {'1x'};
             app.WaveGrid.ColumnSpacing = 8;
@@ -2134,6 +2398,29 @@ classdef signalFinder_exported < matlab.apps.AppBase
             app.WaveAxes.ColorOrder = [0 0.447058823529412 0.741176470588235;0.850980392156863 0.325490196078431 0.0980392156862745;0.929411764705882 0.694117647058824 0.125490196078431;0.494117647058824 0.184313725490196 0.556862745098039;0.466666666666667 0.674509803921569 0.188235294117647;0.301960784313725 0.745098039215686 0.933333333333333;0.63921568627451 0.0784313725490196 0.180392156862745];
             app.WaveAxes.Layout.Row = 1;
             app.WaveAxes.Layout.Column = 1;
+
+            % Create WaveformdBTab
+            app.WaveformdBTab = uitab(app.DiscreteResultsTabGroup);
+            app.WaveformdBTab.Title = 'Waveform (dB)';
+
+            % Create WavedBGrid
+            app.WavedBGrid = uigridlayout(app.WaveformdBTab);
+            app.WavedBGrid.ColumnWidth = {'1x'};
+            app.WavedBGrid.RowHeight = {'1x'};
+            app.WavedBGrid.ColumnSpacing = 8;
+            app.WavedBGrid.RowSpacing = 8;
+            app.WavedBGrid.Padding = [0 8 0 0];
+
+            % Create WavedBAxes
+            app.WavedBAxes = uiaxes(app.WavedBGrid);
+            xlabel(app.WavedBAxes, 'Time (s)')
+            ylabel(app.WavedBAxes, 'Amplitude (dB)')
+            zlabel(app.WavedBAxes, 'Z')
+            app.WavedBAxes.YTick = [-1 0 1];
+            app.WavedBAxes.YTickLabel = {'-1'; '0'; '1'};
+            app.WavedBAxes.ColorOrder = [0 0.447058823529412 0.741176470588235;0.850980392156863 0.325490196078431 0.0980392156862745;0.929411764705882 0.694117647058824 0.125490196078431;0.494117647058824 0.184313725490196 0.556862745098039;0.466666666666667 0.674509803921569 0.188235294117647;0.301960784313725 0.745098039215686 0.933333333333333;0.63921568627451 0.0784313725490196 0.180392156862745];
+            app.WavedBAxes.Layout.Row = 1;
+            app.WavedBAxes.Layout.Column = 1;
 
             % Create SpectrogramTab
             app.SpectrogramTab = uitab(app.DiscreteResultsTabGroup);
@@ -2192,8 +2479,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             % Create StatTable
             app.StatTable = uitable(app.ResultsGrid);
-            app.StatTable.ColumnName = {'Onset|(s)'; 'RMS|(dB re 1µPa)'; 'Peak|(dB re 1µPa)'; 'SNR'; 'SNR|(diff)'; 'CSEL'};
-            app.StatTable.ColumnWidth = {60, 86, 86, 76, 76, 76};
+            app.StatTable.ColumnName = {'Call Start|Time'; 'Call End|Time'; 'Vocal Type'; 'Duration|(ms)'; 'RMS|(dB re 1µPa)'; 'Peak|(dB re 1µPa)'; 'SPL 90%|(dB re 1µPa)'};
+            app.StatTable.ColumnWidth = {75, 75, 75, 75, 86, 86, 86};
             app.StatTable.RowName = {};
             app.StatTable.CellSelectionCallback = createCallbackFcn(app, @StatTableCellSelection, true);
             app.StatTable.Enable = 'off';
@@ -2312,7 +2599,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             % Create InputGrid
             app.InputGrid = uigridlayout(app.GridLayout);
-            app.InputGrid.ColumnWidth = {'1x', 200, 150, 'fit'};
+            app.InputGrid.ColumnWidth = {'fit', 200, 150, 'fit'};
             app.InputGrid.RowHeight = {24, '1x'};
             app.InputGrid.ColumnSpacing = 8;
             app.InputGrid.RowSpacing = 8;
@@ -2328,7 +2615,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             % Create DiscreteButtonGrid
             app.DiscreteButtonGrid = uigridlayout(app.FilePanel);
-            app.DiscreteButtonGrid.ColumnWidth = {'1x', 23, 23, 4, 'fit', 4};
+            app.DiscreteButtonGrid.ColumnWidth = {'1x', 23, 23, 4, 38, 4};
             app.DiscreteButtonGrid.RowHeight = {23, '1x', 'fit', 4, 'fit', '1x', 23};
             app.DiscreteButtonGrid.ColumnSpacing = 0;
             app.DiscreteButtonGrid.RowSpacing = 0;
@@ -2372,8 +2659,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             % Create InputDiscreteTable
             app.InputDiscreteTable = uitable(app.DiscreteButtonGrid);
-            app.InputDiscreteTable.ColumnName = {'Path'; 'SR|(Hz)'; 'Gain|(dB)'; 'Remove|Offset'; 'Sig Freq|(Hz)'; 'Sig|Sens'; 'Amb|Thresh'};
-            app.InputDiscreteTable.ColumnWidth = {170, 60, 60, 70, 80, 60, 70};
+            app.InputDiscreteTable.ColumnName = {'Path'; 'SR|(Hz)'; 'Gain|(dB)'; 'Remove|Offset'; 'Start Time|Offset (s)'; 'Sig Freq|(Hz)'; 'Sig|Sens'; 'Thresh|(dB)'};
+            app.InputDiscreteTable.ColumnWidth = {170, 60, 60, 70, 80, 80, 60, 70};
             app.InputDiscreteTable.RowName = {};
             app.InputDiscreteTable.ColumnEditable = true;
             app.InputDiscreteTable.CellEditCallback = createCallbackFcn(app, @InputDiscreteTableCellEdit, true);
@@ -2389,8 +2676,8 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             % Create AnalysisSettingsGrid
             app.AnalysisSettingsGrid = uigridlayout(app.AnalysisSettingsPanel);
-            app.AnalysisSettingsGrid.ColumnWidth = {'fit', 'fit', 'fit', '1x', 'fit', 'fit'};
-            app.AnalysisSettingsGrid.RowHeight = {23, 23, 'fit', '1x'};
+            app.AnalysisSettingsGrid.ColumnWidth = {'fit', 89, 105, '1x', 204, 203};
+            app.AnalysisSettingsGrid.RowHeight = {23, 23, 17, '1x'};
             app.AnalysisSettingsGrid.ColumnSpacing = 8;
             app.AnalysisSettingsGrid.RowSpacing = 8;
             app.AnalysisSettingsGrid.Padding = [4 4 4 4];
@@ -2512,8 +2799,9 @@ classdef signalFinder_exported < matlab.apps.AppBase
 
             % Create SpectrogramCheckBox
             app.SpectrogramCheckBox = uicheckbox(app.AnalysisSettingsGrid);
+            app.SpectrogramCheckBox.ValueChangedFcn = createCallbackFcn(app, @SpectrogramCheckBoxValueChanged, true);
             app.SpectrogramCheckBox.Text = 'Spectrogram';
-            app.SpectrogramCheckBox.Layout.Row = 3;
+            app.SpectrogramCheckBox.Layout.Row = 4;
             app.SpectrogramCheckBox.Layout.Column = 3;
 
             % Create DownSampField
@@ -2521,7 +2809,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
             app.DownSampField.Limits = [0 Inf];
             app.DownSampField.ValueDisplayFormat = '%11.0f Hz';
             app.DownSampField.ValueChangedFcn = createCallbackFcn(app, @DownSampFieldValueChanged, true);
-            app.DownSampField.Layout.Row = 2;
+            app.DownSampField.Layout.Row = 3;
             app.DownSampField.Layout.Column = 3;
             app.DownSampField.Value = 1000;
 
@@ -2529,22 +2817,37 @@ classdef signalFinder_exported < matlab.apps.AppBase
             app.DownSampCheckBox = uicheckbox(app.AnalysisSettingsGrid);
             app.DownSampCheckBox.ValueChangedFcn = createCallbackFcn(app, @DownSampCheckBoxValueChanged, true);
             app.DownSampCheckBox.Text = 'Downsampling';
-            app.DownSampCheckBox.Layout.Row = 2;
+            app.DownSampCheckBox.Layout.Row = 3;
             app.DownSampCheckBox.Layout.Column = [1 2];
             app.DownSampCheckBox.Value = true;
 
             % Create UnitDropDown
             app.UnitDropDown = uidropdown(app.AnalysisSettingsGrid);
-            app.UnitDropDown.Items = {'dB re 1V/µPa', 'dB re 1V/Pa', 'dB re 1µPa'};
+            app.UnitDropDown.Items = {'dB re 1V/µPa', 'mV/Pa', 'dB re 1V/Pa', 'dB re 1µPa'};
             app.UnitDropDown.Layout.Row = 1;
             app.UnitDropDown.Layout.Column = 3;
             app.UnitDropDown.Value = 'dB re 1µPa';
+
+            % Create ReferenceLevelDropDownLabel
+            app.ReferenceLevelDropDownLabel = uilabel(app.AnalysisSettingsGrid);
+            app.ReferenceLevelDropDownLabel.HorizontalAlignment = 'right';
+            app.ReferenceLevelDropDownLabel.Layout.Row = 2;
+            app.ReferenceLevelDropDownLabel.Layout.Column = 2;
+            app.ReferenceLevelDropDownLabel.Text = 'Reference Level';
+
+            % Create ReferenceLevelDropDown
+            app.ReferenceLevelDropDown = uidropdown(app.AnalysisSettingsGrid);
+            app.ReferenceLevelDropDown.Items = {'1 µPa', '20 µPa'};
+            app.ReferenceLevelDropDown.ValueChangedFcn = createCallbackFcn(app, @ReferenceLevelDropDownValueChanged, true);
+            app.ReferenceLevelDropDown.Layout.Row = 2;
+            app.ReferenceLevelDropDown.Layout.Column = 3;
+            app.ReferenceLevelDropDown.Value = '1 µPa';
 
             % Create VersionLabel
             app.VersionLabel = uilabel(app.InputGrid);
             app.VersionLabel.Layout.Row = 1;
             app.VersionLabel.Layout.Column = 1;
-            app.VersionLabel.Text = 'Signal Finder, Version 1.0';
+            app.VersionLabel.Text = 'Signal Finder v1.0';
 
             % Create SkipAmbientCheckBox
             app.SkipAmbientCheckBox = uicheckbox(app.InputGrid);
@@ -2555,9 +2858,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
             % Create ModeButtonGroup
             app.ModeButtonGroup = uibuttongroup(app.InputGrid);
             app.ModeButtonGroup.SelectionChangedFcn = createCallbackFcn(app, @ModeButtonGroupSelectionChanged, true);
-            app.ModeButtonGroup.Enable = 'off';
             app.ModeButtonGroup.BorderWidth = 2;
-            app.ModeButtonGroup.Visible = 'off';
             app.ModeButtonGroup.Layout.Row = 1;
             app.ModeButtonGroup.Layout.Column = 2;
 
@@ -2573,14 +2874,19 @@ classdef signalFinder_exported < matlab.apps.AppBase
             app.AmbientButton.Position = [116 1 66 22];
 
             % Create SpecSettingsButton
-            app.SpecSettingsButton = uibutton(app.UIFigure, 'push');
+            app.SpecSettingsButton = uibutton(app.SignalFinderUIFigure, 'push');
             app.SpecSettingsButton.ButtonPushedFcn = createCallbackFcn(app, @SpecSettingsButtonPushed, true);
             app.SpecSettingsButton.Enable = 'off';
-            app.SpecSettingsButton.Position = [288 -64 284 22];
+            app.SpecSettingsButton.Position = [288 -62 284 22];
             app.SpecSettingsButton.Text = 'Spectrogram Settings';
 
+            % Create v13NotesAddedbuttontoexportstatsforallanalyzedfilesLabel
+            app.v13NotesAddedbuttontoexportstatsforallanalyzedfilesLabel = uilabel(app.SignalFinderUIFigure);
+            app.v13NotesAddedbuttontoexportstatsforallanalyzedfilesLabel.Position = [775 -100 342 59];
+            app.v13NotesAddedbuttontoexportstatsforallanalyzedfilesLabel.Text = {'v1.3 Notes'; '- Added button to export stats for all analyzed files'; 'v1.4 Notes'; '- Added checkbox to skip ambient analysis'};
+
             % Show the figure after all components are created
-            app.UIFigure.Visible = 'on';
+            app.SignalFinderUIFigure.Visible = 'on';
         end
     end
 
@@ -2588,13 +2894,13 @@ classdef signalFinder_exported < matlab.apps.AppBase
     methods (Access = public)
 
         % Construct app
-        function app = signalFinder_exported
+        function app = signalFinder_exported_1_1
 
             % Create UIFigure and components
             createComponents(app)
 
             % Register the app with App Designer
-            registerApp(app, app.UIFigure)
+            registerApp(app, app.SignalFinderUIFigure)
 
             % Execute the startup function
             runStartupFcn(app, @startupFcn)
@@ -2608,7 +2914,7 @@ classdef signalFinder_exported < matlab.apps.AppBase
         function delete(app)
 
             % Delete UIFigure when app is deleted
-            delete(app.UIFigure)
+            delete(app.SignalFinderUIFigure)
         end
     end
 end
