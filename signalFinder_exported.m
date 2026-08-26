@@ -1,4 +1,4 @@
-classdef signalFinder_exported_1_2 < matlab.apps.AppBase
+classdef signalFinder_exported < matlab.apps.AppBase
 
     % Properties that correspond to app components
     properties (Access = public)
@@ -125,7 +125,13 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
         % "Thresh" -
         % "SignalTable"
 
-        version = "v1.2"
+        version = "v1.3.0"
+
+        %%
+        % v1.3 - reconfigured table construction for discrete mode to make
+        % sure types are assigned correctly
+        %%
+
 
         tableColumnNames = [
             "Path", ...
@@ -818,22 +824,33 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
 
             % shade signal and ambient sections
             ylimits = ylim(app.WaveAxes);
-
-            patch(app.WaveAxes, ...
+            if app.SkipAmbientCheckBox.Value
+                for i = 1:nSignals
+                    patch(app.WaveAxes, ...
+                        [app.CoreTable.SignalTable{row}.Onset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Onset(i)/Fs], ...
+                        [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
+                        [0.6,0.6,0.6], 'EdgeColor','none')
+                end
+            else 
+                patch(app.WaveAxes, ...
                 [app.CoreTable.SignalTable{row}.Onset(1)/Fs, ...
                     app.CoreTable.SignalTable{row}.Offset(1)/Fs, ...
                     app.CoreTable.SignalTable{row}.Offset(1)/Fs, ...
                     app.CoreTable.SignalTable{row}.Onset(1)/Fs], ...
                 [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
                 [0.8,0.8,0.8], 'EdgeColor','none')
-            for i = 2:nSignals
-                patch(app.WaveAxes, ...
-                    [app.CoreTable.SignalTable{row}.Onset(i)/Fs, ...
-                    app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
-                    app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
-                    app.CoreTable.SignalTable{row}.Onset(i)/Fs], ...
-                    [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
-                    [0.6,0.6,0.6], 'EdgeColor','none')
+                for i = 2:nSignals
+                    patch(app.WaveAxes, ...
+                        [app.CoreTable.SignalTable{row}.Onset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Onset(i)/Fs], ...
+                        [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
+                        [0.6,0.6,0.6], 'EdgeColor','none')
+                end
             end
 
             % reorder plots so line is on top of shading
@@ -854,22 +871,35 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
             % shade signal and ambient sections
             ylimits = ylim(app.WavedBAxes);
 
-            patch(app.WavedBAxes, ...
-                [app.CoreTable.SignalTable{row}.Onset(1)/Fs + app.CoreTable.TimeOffset(row), ...
-                    app.CoreTable.SignalTable{row}.Offset(1)/Fs + app.CoreTable.TimeOffset(row), ...
-                    app.CoreTable.SignalTable{row}.Offset(1)/Fs + app.CoreTable.TimeOffset(row), ...
-                    app.CoreTable.SignalTable{row}.Onset(1)/Fs + app.CoreTable.TimeOffset(row)], ...
+            if app.SkipAmbientCheckBox.Value
+                for i = 1:nSignals
+                    patch(app.WavedBAxes, ...
+                        [app.CoreTable.SignalTable{row}.Onset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Onset(i)/Fs], ...
+                        [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
+                        [0.6,0.6,0.6], 'EdgeColor','none')
+                end
+            else 
+                patch(app.WavedBAxes, ...
+                [app.CoreTable.SignalTable{row}.Onset(1)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Offset(1)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Offset(1)/Fs, ...
+                    app.CoreTable.SignalTable{row}.Onset(1)/Fs], ...
                 [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
                 [0.8,0.8,0.8], 'EdgeColor','none')
-            for i = 2:nSignals
-                patch(app.WavedBAxes, ...
-                    [app.CoreTable.SignalTable{row}.Onset(i)/Fs + app.CoreTable.TimeOffset(row), ...
-                    app.CoreTable.SignalTable{row}.Offset(i)/Fs + app.CoreTable.TimeOffset(row), ...
-                    app.CoreTable.SignalTable{row}.Offset(i)/Fs + app.CoreTable.TimeOffset(row), ...
-                    app.CoreTable.SignalTable{row}.Onset(i)/Fs + app.CoreTable.TimeOffset(row)], ...
-                    [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
-                    [0.6,0.6,0.6], 'EdgeColor','none')
+                for i = 2:nSignals
+                    patch(app.WavedBAxes, ...
+                        [app.CoreTable.SignalTable{row}.Onset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Offset(i)/Fs, ...
+                        app.CoreTable.SignalTable{row}.Onset(i)/Fs], ...
+                        [ylimits(1), ylimits(1), ylimits(2),ylimits(2)], ...
+                        [0.6,0.6,0.6], 'EdgeColor','none')
+                end
             end
+            
             % reorder plots so line is on top of shading
             % https://www.mathworks.com/matlabcentral/answers/8350-how-send-to-back-patch-objects-in-a-graph
             set(app.WavedBAxes,'children',flipud(get(app.WavedBAxes,'children')));
@@ -1122,7 +1152,11 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
                     "rms", "Peak", "spl90"];
                 app.StatTable.Data = app.CoreTable.SignalTable{row}{:,cols};
                 rowCount = size(app.CoreTable.SignalTable{row},1);
-                rows = ['amb',string(1:(rowCount-1))];
+                if ~app.SkipAmbientCheckBox.Value
+                    rows = ['amb',string(1:(rowCount-1))];
+                else
+                    rows = string(1:rowCount);
+                end
                 app.StatTable.RowName = rows;
 
             else
@@ -1511,80 +1545,79 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
         
         
                     %% get ambient measurements
-                    if nSignals == 0
-                        % Create empty signal table
-                        tempSignalTable = array2table(zeros(1,13), ...
-                            'VariableNames',["SigNum", "Onset","Offset", ...
-                            "OnsetS", "OnsetString", "OffsetString", ...
-                            "VocalType", "Duration", "rms", "Peak", ...
-                            "spl90", "SNR", "SNRdiff"]);
-                        % no signals, so just use first full second
-                        ambOnset = 1;
-                        ambOffset = 1*Fs;
-                        app.CoreTable.AmbWaveform{j} = waveIn(ambOnset:ambOffset,:);
-                        UpdateWarning(app, 'No signal detected above ambient noise, onset of signal(s) cannot be detected')
-                        
-                        ambRMSuPa = rms(app.CoreTable.AmbWaveform{j}.uPaFilt);
-                        ambPeakuPa = max(abs(app.CoreTable.AmbWaveform{j}.uPaFilt));
-                    else
-                        tempSignalTable = array2table([signalI', sigStarts+dSampOffset, sigEnds+dSampOffset, zeros(nSignals,10)], ...
-                            'VariableNames',["SigNum","Onset","Offset", ...
-                            "OnsetS", "OnsetString", "OffsetString", ...
-                            "VocalType", "Duration", "rms", "Peak", ...
-                            "spl90", "SNR", "SNRdiff",]);  % Signal number, Onset, Offset
-                        % signals detected, use 1 second before first signal
-                        if tempSignalTable.Onset(1)-dSampOffset < 1*Fs
-                            % first signal is less than 1 second in
-                            ambOnset = nan;
-                            ambOffset = nan;
-                            ambRMSuPa = nan;
-                            ambPeakuPa = nan;
-                            % warn user
-                            sigOnset = tempSignalTable.Onset(1);
-                            UpdateWarning(app, sprintf('Signal onset less than 1 second from waveform start, cannot get 1 sec of ambient noise (%0.2f s)', sigOnset/Fs))
-                        else
-                            ambOnset = round(tempSignalTable.Onset(1)-1*Fs);
-                            ambOffset = tempSignalTable.Onset(1);
-                            UpdateWarning(app)
-                            
-                            app.CoreTable.AmbWaveform{j} = waveIn(ambOnset-dSampOffset:ambOffset-dSampOffset,:);
+
+                    doAmbient = ~app.SkipAmbientCheckBox.Value;
+                    
+                
+                    if doAmbient
+
+                        if nSignals == 0
+                            % no signals, so just use first full second
+                            ambOnset = 1;
+                            ambOffset = 1*Fs;
+                            app.CoreTable.AmbWaveform{j} = waveIn(ambOnset:ambOffset,:);
+                            UpdateWarning(app, 'No signal detected above ambient noise, onset of signal(s) cannot be detected')
                             
                             ambRMSuPa = rms(app.CoreTable.AmbWaveform{j}.uPaFilt);
                             ambPeakuPa = max(abs(app.CoreTable.AmbWaveform{j}.uPaFilt));
-                        end
-                       
-                    end
 
-                    % Convert RMS and peak to dB
-                    ambRMS = 20*log10(ambRMSuPa);
-                    ambPeak = 20*log10(ambPeakuPa);
+                        else
+                            signalI = [0 signalI];
+                            % signals detected, use 1 second before first signal
+                            if sigStarts(1) < 1*Fs
+                                % first signal is less than 1 second in
+                                ambOnset = nan;
+                                ambOffset = nan;
+                                ambRMSuPa = nan;
+                                ambPeakuPa = nan;
+                                % warn user
+                                UpdateWarning(app, sprintf('Signal onset less than 1 second from waveform start, cannot get 1 sec of ambient noise (%0.2f s)', (sigStarts(1)+dSampOffset)/Fs))
+                            else
+                                ambOnset = round(sigStarts(1)-1*Fs);
+                                ambOffset = sigStarts(1);
+                                UpdateWarning(app)
+                                
+                                app.CoreTable.AmbWaveform{j} = waveIn(ambOnset-dSampOffset:ambOffset-dSampOffset,:);
+                                
+                                ambRMSuPa = rms(app.CoreTable.AmbWaveform{j}.uPaFilt);
+                                ambPeakuPa = max(abs(app.CoreTable.AmbWaveform{j}.uPaFilt));
+                            end
+                        end
+                        
+                        % Convert RMS and peak to dB
+                        ambRMS = 20*log10(ambRMSuPa);
+                        ambPeak = 20*log10(ambPeakuPa);
+
+                    end
                     
-                    tempSignalTable = tempSignalTable([1,1:end], :);  % add empty row to top
-                    tempSignalTable = convertvars(tempSignalTable, ["OnsetString","OffsetString","VocalType"], 'string');
-                    tempSignalTable(1,:) = table( ...
-                        0, ...
-                        ambOnset-dSampOffset, ...
-                        ambOffset-dSampOffset, ...
-                        ambOnset/Fs, ...
-                        string(seconds(ambOnset/Fs),"mm:ss.SS"), ...
-                        string(seconds(ambOffset/Fs),"mm:ss.SS"),...
-                        "ambient", ...
-                        (ambOffset - ambOnset)/Fs, ...
-                        ambRMS, ...
-                        ambPeak, ...
-                        NaN, ...
-                        NaN, ...
-                        NaN ...
-                        );
-                    % app.statTableArray{j}(1,:) = {ambOnset/Fs, ambRMS, ambPeak, NaN, NaN};
+                    % tempSignalTable = convertvars(tempSignalTable, ["OnsetString","OffsetString","VocalType"], 'string');
+                    
+                    
                     
                     %% loop through detected signals and get measurements (rms, peak, SNR, CSEL) for each
-                    % recordLength = 0;  % for calculating CSEL, cumsum of total durations
+                    recordLength = 0;  % for calculating CSEL, cumsum of total durations
                     
-                    for i = 1:nSignals
-                        signalOnset = tempSignalTable.Onset(i+1);
+                    tableSigOnset = zeros(nSignals+doAmbient, 1);
+                    tableSigOffset = zeros(nSignals+doAmbient, 1);
+
+                    tableSigOnsetS = zeros(nSignals+doAmbient, 1);
+                    tableSigrms = zeros(nSignals+doAmbient, 1);
+                    tableSigPeak = zeros(nSignals+doAmbient, 1);
+                    tableSigSpl90 = zeros(nSignals+doAmbient, 1);
+
+                    tableSigSEL = zeros(nSignals+doAmbient, 1);
+                    tableSigSNR = nan(nSignals+doAmbient, 1);
+                    tableSigSNRdiff = nan(nSignals+doAmbient, 1);
                         
-                        signalOffset = tempSignalTable.Offset(i+1);  % signalOffset is offset from trimmed waveform, so not including timeOffset
+                    tableSigOnsetString = strings(nSignals+doAmbient, 1);
+                    tableSigOffsetString = strings(nSignals+doAmbient, 1);
+                    tableSigVocalType = strings(nSignals+doAmbient, 1);
+                    tableSigDuration = zeros(nSignals+doAmbient, 1);
+
+                    for i = (1:nSignals)
+                        signalOnset = sigStarts(i) + dSampOffset;
+                        
+                        signalOffset = sigEnds(i) + dSampOffset;  % signalOffset is offset from trimmed waveform, so not including timeOffset
                         if signalOffset > height(waveIn)+dSampOffset
                             signalOffset = height(waveIn);
                         end
@@ -1600,43 +1633,89 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
                         sigPeak = 20*log10(sigPeakuPa/dBref);
 
 
-                        % %% Get SNR
-                        % % https://www.mathworks.com/matlabcentral/answers/35658-how-can-i-calculate-the-signal-to-noise-ratio-snr-of-a-chirp-signal
-                        % snr = (sigRMS/ambRMS)^2;
-                        % snrDiff = sigRMS - ambRMS;
-                        % 
-                        % %% Get SEL
-                        % % CSEL options:
-                        % %   https://dosits.org/science/advanced-topics/sound-pressure-levels-and-sound-exposure-levels/
-                        % %     CSEL is SEL_ss + 10*log_10(N)
-                        % %     where SEL_ss is SEL of single pulse and N is number of pulses
-                        % %   Theobald et al 2009 - https://www.researchgate.net/publication/229030710_CUMULATIVE_NOISE_EXPOSURE_ASSESSMENT_FOR_MARINE_MAMMALS_USING_SOUND_EXPOSURE_LEVEL_AS_A_METRIC
-                        % %     "The SEL for each impulsive noise event can be aggregated by summation to calculate the total SEL
-                        % %     (or cumulative SEL) for the entire exposure duration"
-                        % %   From selcalc.m
-                        % recordLength = recordLength + length(signalWaveform.VFilt)/Fs;
-                        % sigSEL = sigRMS + 10*log10(recordLength);
-                        %%
-                        
+                        %% Get SNR
+                        % https://www.mathworks.com/matlabcentral/answers/35658-how-can-i-calculate-the-signal-to-noise-ratio-snr-of-a-chirp-signal
+                        if doAmbient
+                            snr = (sigRMS/ambRMS)^2;
+                            snrDiff = sigRMS - ambRMS;
+                        else
+                            snr = nan;
+                            snrDiff = nan;
+                        end
+
+                        %% Get SEL
+                        % CSEL options:
+                        %   https://dosits.org/science/advanced-topics/sound-pressure-levels-and-sound-exposure-levels/
+                        %     CSEL is SEL_ss + 10*log_10(N)
+                        %     where SEL_ss is SEL of single pulse and N is number of pulses
+                        %   Theobald et al 2009 - https://www.researchgate.net/publication/229030710_CUMULATIVE_NOISE_EXPOSURE_ASSESSMENT_FOR_MARINE_MAMMALS_USING_SOUND_EXPOSURE_LEVEL_AS_A_METRIC
+                        %     "The SEL for each impulsive noise event can be aggregated by summation to calculate the total SEL
+                        %     (or cumulative SEL) for the entire exposure duration"
+                        %   From selcalc.m
+                        recordLength = recordLength + length(signalWaveform.uPaFilt)/Fs;
+                        sigSEL = sigRMS + 10*log10(recordLength);
+
                         signalOnsetS = (signalOnset/Fs);
                         signalOffsetS = (signalOffset/Fs);
                         
-                        tempSignalTable.Onset(i+1) = signalOnset;
-                        tempSignalTable.Offset(i+1) = signalOffset;
+                        tableSigOnset(i+doAmbient) = signalOnset;
+                        tableSigOffset(i+doAmbient)  = signalOffset;
+    
+                        tableSigOnsetS(i+doAmbient)  = signalOnsetS;
+                        tableSigrms(i+doAmbient)  = sigRMS;
+                        tableSigPeak(i+doAmbient)  = sigPeak;
+                        tableSigSpl90(i+doAmbient)  = sigSPL90;
+    
+                        tableSigSEL(i+doAmbient)  = sigSEL;
+                        tableSigSNR(i+doAmbient)  = snr;
+                        tableSigSNRdiff(i+doAmbient)  = snrDiff;
+                            
+                        tableSigOnsetString(i+doAmbient)  = string(seconds(signalOnsetS),"mm:ss.SS");
+                        tableSigOffsetString(i+doAmbient)  = string(seconds(signalOffsetS),"mm:ss.SS");
+                        tableSigVocalType(i+doAmbient)  = "potential call";
+                        tableSigDuration(i+doAmbient)  = (signalOffsetS - signalOnsetS)*1000;
 
-                        tempSignalTable.OnsetS(i+1) = signalOnsetS;
-                        tempSignalTable.rms(i+1) = sigRMS;
-                        tempSignalTable.Peak(i+1) = sigPeak;
-                        tempSignalTable.spl90(i+1) = sigSPL90;
-                        
-                        tempSignalTable.OnsetString(i+1) = string(seconds(signalOnsetS),"mm:ss.SS");
-                        tempSignalTable.OffsetString(i+1) = string(seconds(signalOffsetS),"mm:ss.SS");
-                        tempSignalTable.VocalType(i+1) = "potential call";
-                        tempSignalTable.Duration(i+1) = (signalOffsetS - signalOnsetS)*1000;
-                        
                         % app.statTableArray{j}(i+1,:) = {signalOnset/Fs, sigRMS, sigPeak, snr, sigSEL};
                         % % app.StatTable.Data(i,:) = {i, rmsSignal, sigPeak, snr, frequencydomainSEL};
                     end
+                    
+                    if doAmbient
+                        tableSigOnset(1) = ambOnset-dSampOffset;
+                        tableSigOffset(1)  = ambOffset-dSampOffset;
+    
+                        tableSigOnsetS(1)  = ambOnset/Fs;
+                        tableSigrms(1)  = ambRMS;
+                        tableSigPeak(1)  = ambPeak;
+                        % tableSigSpl90(1)  = sigSPL90;
+                            
+                        tableSigOnsetString(1)  = string(seconds(ambOnset/Fs),"mm:ss.SS");
+                        tableSigOffsetString(1)  = string(seconds(ambOffset/Fs),"mm:ss.SS");
+                        tableSigVocalType(1)  = "ambient";
+                        tableSigDuration(1)  = (ambOffset - ambOnset)/Fs;
+                        
+                    end
+                    tempSignalTable = table( ...
+                        signalI', ...
+                        tableSigOnset, ...
+                        tableSigOffset, ...
+                        tableSigOnsetS, ...
+                        tableSigOnsetString, ...
+                        tableSigOffsetString, ...
+                        tableSigVocalType, ...
+                        tableSigDuration, ...
+                        tableSigrms, ...
+                        tableSigPeak, ...
+                        tableSigSpl90, ...
+                        tableSigSNR, ...
+                        tableSigSNRdiff, ...
+                        tableSigSEL ...
+                        , ...
+                            'VariableNames', ["SigNum","Onset","Offset", ...
+                            "OnsetS", "OnsetString", "OffsetString", ...
+                            "VocalType", "Duration", "rms", "Peak", ...
+                            "spl90", "SNR", "SNRdiff","SigSEL"]);
+                    
+
                     app.CoreTable.SignalTable{j} = tempSignalTable;
                     message = sprintf('Analyzing file %d of %d (Generating spectrogram)', j, app.NumFiles);
                     UpdateWarning(app, message)
@@ -1809,8 +1888,8 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
 
                 
                 
-                tempTable = app.CoreTable.SignalTable{row}{:,cols};
-                tempTable = array2table(tempTable);
+                tempTable = app.CoreTable.SignalTable{row}(:,cols);
+                % tempTable = array2table(tempTable);
                 tempTable.Properties.VariableNames = colNames;
                 filenameCol = repmat(app.CoreTable.Filename{row}, height(tempTable),1);  % create a column with the filename
                 tempTable = addvars(tempTable, filenameCol, 'Before', 1, 'NewVariableNames', "Filename");  % insert the filename into the table
@@ -1819,7 +1898,7 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
                     
 
                 combinedTable = vertcat(tempCell{:});
-                combinedTable.Properties.VariableNames = replace(tempTable.Properties.VariableNames, "|", " ");  % just remove the bars that are used for line breaks in the table
+                combinedTable.Properties.VariableNames = replace(tempTable.Properties.VariableNames, "|", " ");
                 writetable(combinedTable,fullfile(path,file), 'Encoding', 'UTF-8')
                 
                 % tempTable = array2table(app.StatTable.Data);
@@ -1853,8 +1932,8 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
 
                 for i=1:app.NumFiles
                     
-                    tempTable = app.CoreTable.SignalTable{i}{:,cols};
-                    tempTable = array2table(tempTable);
+                    tempTable = app.CoreTable.SignalTable{i}(:,cols);
+                    % tempTable = array2table(tempTable);
                     tempTable.Properties.VariableNames = colNames;
                     filenameCol = repmat(app.CoreTable.Filename{i}, height(tempTable),1);  % create a column with the filename
                     tempTable = addvars(tempTable, filenameCol, 'Before', 1, 'NewVariableNames', "Filename");  % insert the filename into the table
@@ -2905,7 +2984,7 @@ classdef signalFinder_exported_1_2 < matlab.apps.AppBase
     methods (Access = public)
 
         % Construct app
-        function app = signalFinder_exported_1_2
+        function app = signalFinder_exported
 
             % Create UIFigure and components
             createComponents(app)
