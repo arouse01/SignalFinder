@@ -125,11 +125,15 @@ classdef signalFinder_exported < matlab.apps.AppBase
         % "Thresh" -
         % "SignalTable"
 
-        version = "v1.3.0"
+        version = "v1.3.1"
 
         %%
         % v1.3 - reconfigured table construction for discrete mode to make
         % sure types are assigned correctly
+        %
+        % v1.3.1 - exported filenames now include extension so a filename
+        % that's only numbers doesn't get converted into a number value in
+        % Excel
         %%
 
 
@@ -1891,7 +1895,9 @@ classdef signalFinder_exported < matlab.apps.AppBase
                 tempTable = app.CoreTable.SignalTable{row}(:,cols);
                 % tempTable = array2table(tempTable);
                 tempTable.Properties.VariableNames = colNames;
-                filenameCol = repmat(app.CoreTable.Filename{row}, height(tempTable),1);  % create a column with the filename
+                [~, filename, extension] = fileparts(app.CoreTable.Path{row});
+                tempFullFileName = [filename, extension];
+                filenameCol = repmat(tempFullFileName, height(tempTable),1);  % create a column with the filename
                 tempTable = addvars(tempTable, filenameCol, 'Before', 1, 'NewVariableNames', "Filename");  % insert the filename into the table
                 
                 tempCell{row} = tempTable;
@@ -1935,7 +1941,9 @@ classdef signalFinder_exported < matlab.apps.AppBase
                     tempTable = app.CoreTable.SignalTable{i}(:,cols);
                     % tempTable = array2table(tempTable);
                     tempTable.Properties.VariableNames = colNames;
-                    filenameCol = repmat(app.CoreTable.Filename{i}, height(tempTable),1);  % create a column with the filename
+                    [~, filename, extension] = fileparts(app.CoreTable.Path{i});
+                    tempFullFileName = [filename, extension];
+                    filenameCol = repmat(tempFullFileName, height(tempTable),1);  % create a column with the filename
                     tempTable = addvars(tempTable, filenameCol, 'Before', 1, 'NewVariableNames', "Filename");  % insert the filename into the table
                     
                     tempCell{i} = tempTable;
